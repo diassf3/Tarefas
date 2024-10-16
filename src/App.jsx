@@ -31,7 +31,7 @@ function App() {
     error: errorUsuarios,
   } = useFetch("https://jsonplaceholder.typicode.com/users");
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (tarefas && usuarios) {
       const tarefas_usuarios = tarefas.map((tarefa) => {
         const usuario = usuarios.find((user) => user.id === tarefa.userId);
@@ -48,8 +48,8 @@ function App() {
   if (errorTarefas || errorUsuarios) return <p>Ocorreu um erro!</p>;
 
   const alterarTarefa = (id) => {
-    setTarefasEstado((prevTarefas) =>
-      prevTarefas.map((tarefa) =>
+    setTarefasEstado((testTarefas) =>
+      testTarefas.map((tarefa) =>
         tarefa.id === id ? { ...tarefa, completed: !tarefa.completed } : tarefa
       )
     );
